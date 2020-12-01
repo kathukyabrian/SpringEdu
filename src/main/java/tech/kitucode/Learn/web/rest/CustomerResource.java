@@ -1,9 +1,15 @@
 package tech.kitucode.Learn.web.rest;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tech.kitucode.Learn.domain.Customer;
 import tech.kitucode.Learn.repository.CustomerRepository;
 import tech.kitucode.Learn.service.CustomerService;
 import tech.kitucode.Learn.service.dto.CustomerDTO;
+
+import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController

@@ -6,6 +6,8 @@ import tech.kitucode.Learn.repository.CustomerRepository;
 import tech.kitucode.Learn.service.dto.CustomerDTO;
 import tech.kitucode.Learn.service.mapper.CustomerMapper;
 
+import java.util.List;
+
 @Service
 public class CustomerService {
     private final CustomerRepository customerRepository;
@@ -27,4 +29,5 @@ public class CustomerService {
         // covert entity to dto and return it.
         return customerMapper.toDTO(customer);
     }
+
 }
