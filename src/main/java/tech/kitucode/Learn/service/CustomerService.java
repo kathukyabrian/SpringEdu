@@ -8,6 +8,9 @@ import tech.kitucode.Learn.repository.CustomerRepository;
 import tech.kitucode.Learn.service.dto.CustomerDTO;
 import tech.kitucode.Learn.service.mapper.CustomerMapper;
 
+import java.util.List;
+import java.util.Optional;
+
 
 @Service
 public class CustomerService {
@@ -20,6 +23,24 @@ public class CustomerService {
         // wire
         this.customerRepository = customerRepository;
         this.customerMapper = customerMapper;
+    }
+
+    public List<CustomerDTO> getAll(){
+        return customerMapper.toDTO((List<Customer>) customerRepository.findAll());
+    }
+
+    public CustomerDTO findOne(Long id){
+        // call repository to find one customer by id
+        Optional<Customer> customer = customerRepository.findById(id);
+//        if(!customer.isPresent()){
+//            return null;
+//        }
+        return customerMapper.toDTO(customer.get());
+    }
+
+    public void delete(Long id){
+        // call repository to delete by id
+        customerRepository.deleteById(id);
     }
 
     public CustomerDTO save(CustomerDTO customerDTO){
